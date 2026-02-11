@@ -1,3 +1,2 @@
-# todo_app
-
- simple task app
+# Straw Notes
+ A simple, ad & bloatware free tasks/to-do list app
