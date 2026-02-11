@@ -41,9 +41,13 @@ class _HomePageState extends State<HomePage> {
 
   void saveNewTask() {
     setState(() {
-      if (_controller.text.isNotEmpty) {
-        // store task text, completion state, and creation timestamp
-        db.toDoList.add([_controller.text, false, DateTime.now().toString()]);
+      if (_controller.text.trim().isNotEmpty) {
+        // store trimmed task text, completion state, and creation timestamp
+        db.toDoList.add([
+          _controller.text.trim(),
+          false,
+          DateTime.now().toString(),
+        ]);
         _controller.clear();
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -95,8 +99,8 @@ class _HomePageState extends State<HomePage> {
 
   void saveEditedTask(int index) {
     setState(() {
-      if (_controller.text.isNotEmpty) {
-        db.toDoList[index][0] = _controller.text;
+      if (_controller.text.trim().isNotEmpty) {
+        db.toDoList[index][0] = _controller.text.trim();
         _controller.clear();
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
